@@ -1,4 +1,4 @@
-from flask import Flask, render_template_string
+from flask import Flask, render_template
 import ccxt
 from ccxt import ExchangeError, BadSymbol
 
@@ -45,7 +45,7 @@ def home():
         except ExchangeError:
             continue
 
-    return render_template_string('<br>'.join(messages))
+    return render_template('index.html', messages=messages)
 
 if __name__ == "__main__":
     app.run(debug=True)
